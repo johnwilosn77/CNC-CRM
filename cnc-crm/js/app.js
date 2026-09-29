@@ -1,3 +1,6 @@
+// ========================================
+// 1. STORAGE AND APP STATE
+// ========================================
 const storage = window.crmStorage;
 storage.initialize();
 
@@ -12,6 +15,9 @@ const pageInformation = {
   activity: ["Activity history", "Review important changes across your leads."],
 };
 
+// ========================================
+// 2. DOM ELEMENT REFERENCES
+// ========================================
 const elements = {
   pages: document.querySelectorAll(".page"),
   navLinks: document.querySelectorAll(".nav-link"),
@@ -48,6 +54,9 @@ function roleLabel(role) {
   }[role];
 }
 
+// ========================================
+// 3. APP INITIALIZATION
+// ========================================
 function initializeApp() {
   renderUserSelector();
   renderSalespeople();
@@ -89,6 +98,9 @@ function bindEvents() {
   });
 }
 
+// ========================================
+// 4. NAVIGATION
+// ========================================
 function showPage(pageName) {
   elements.pages.forEach((page) => page.classList.remove("active"));
   elements.navLinks.forEach((link) => link.classList.toggle("active", link.dataset.page === pageName));
@@ -111,6 +123,9 @@ function renderSalespeople() {
     .join("")}`;
 }
 
+// ========================================
+// 5. ROLE / ACCESS LOGIC
+// ========================================
 function getAccessibleLeads() {
   if (currentUser.role === "admin") return leads;
   if (currentUser.role === "lead_generator") {
@@ -128,6 +143,9 @@ function renderAll() {
   elements.addLeadButton.hidden = currentUser.role === "salesperson";
 }
 
+// ========================================
+// 6. DASHBOARD
+// ========================================
 function renderDashboard() {
   const visibleLeads = getAccessibleLeads();
   const finalSales = visibleLeads.reduce((sum, lead) => sum + Number(lead.finalValue || 0), 0);
@@ -185,6 +203,9 @@ function renderDashboard() {
     : `<div class="small-empty">No upcoming follow-ups.</div>`;
 }
 
+// ========================================
+// 7. LEADS
+// ========================================
 function renderLeadsTable() {
   const search = elements.searchInput.value.trim().toLowerCase();
   const status = elements.statusFilter.value;
@@ -214,6 +235,9 @@ function renderLeadsTable() {
     .join("");
 }
 
+// ========================================
+// 8. ACTIVITY
+// ========================================
 function renderActivity() {
   const visibleIds = new Set(getAccessibleLeads().map((lead) => lead.id));
   const visibleActivity = activity
@@ -238,6 +262,9 @@ function renderActivity() {
     : `<div class="small-empty">No activity is available for these leads.</div>`;
 }
 
+// ========================================
+// 9. LEAD FORM
+// ========================================
 function openLeadForm(leadId = "") {
   elements.leadForm.reset();
   document.querySelector("#leadId").value = leadId;
@@ -341,6 +368,9 @@ function addActivity(leadId, action, detail) {
   });
 }
 
+// ========================================
+// 10. DELETE LEAD
+// ========================================
 function requestDelete(leadId) {
   deleteTargetId = leadId;
   elements.confirmDialog.showModal();
@@ -358,6 +388,9 @@ function deleteLead() {
   showToast("Lead deleted");
 }
 
+// ========================================
+// 11. HELPER FUNCTIONS
+// ========================================
 function fieldValue(id) {
   return document.querySelector(`#${id}`).value.trim();
 }

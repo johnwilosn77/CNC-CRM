@@ -1,3 +1,6 @@
+import { showLeadsPage } from "./pages/leads.js";
+
+
 // HTML elements ko JavaScript mein access karo
 const dashboardButton = document.getElementById("dashboardButton");
 const leadsButton = document.getElementById("leadsButton");
@@ -18,5 +21,22 @@ leadsButton.addEventListener("click", function () {
     mainContent.innerHTML = `
         <h2>Leads</h2>
         <p>Your leads will appear here.</p>
+    `;
+});
+
+//Users button par click
+usersButton.addEventListener("click", function () {
+    mainContent.innerHTML = `
+        <h2>Users</h2>
+        <p>Your users will appear here.</p>
+    `;
+});
+
+
+// Settings button par click opent the settings page
+settingsButton.addEventListener("click", function () {
+    mainContent.innerHTML = `
+        <h2>Settings</h2>
+        <p>Your settings will appear here.</p>
     `;
 });

@@ -1,53 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>C&C CRM</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-    <!-- CRM Header -->
     <header class="header">
         <h1>C&C CRM</h1>
     </header>
 
-  
-
-
-    <!-- CRM Layout -->
     <div class="crm-layout">
 
-        <!-- Sidebar -->
         <aside class="sidebar">
+            <nav aria-label="Main navigation">
+                <button id="dashboardButton" type="button">
+                    Dashboard
+                </button>
 
-            <nav>
-                <button id="dashboardButton">Dashboard</button>
-                <button id="leadsButton">Leads</button>
-                <button id="usersButton">Users</button>
-                <button id="settingsButton">Settings</button>
+                <button id="leadsButton" type="button">
+                    Leads
+                </button>
+
+                <button id="usersButton" type="button">
+                    Users
+                </button>
+
+                <button id="settingsButton" type="button">
+                    Settings
+                </button>
             </nav>
-
         </aside>
 
-
-        <!-- Main Content -->
-        <main class="main-content">
-
-            <h2>Dashboard</h2>
-
-            <p>Welcome to C&C CRM.</p>
-
+        <main id="mainContent">
+            <!-- JavaScript will show the selected page here -->
         </main>
 
     </div>
 
-
-    <script src="js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
 
 </body>
 </html>

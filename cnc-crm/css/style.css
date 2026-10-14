@@ -45,7 +45,7 @@ body {
     cursor: pointer;
 }
 
-.main-content {
+main {
     flex: 1;
-    padding: 24px;
+    padding: 30px;
 }
